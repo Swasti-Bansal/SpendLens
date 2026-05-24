@@ -62,6 +62,15 @@ export default function FormPage() {
     ))
   }
 
+  function handlePlanChange(index, planKey) {
+    const toolKey = tools[index].toolKey
+    const price = TOOLS[toolKey]?.plans[planKey]?.price || 0
+    const seats = tools[index].seats || 1
+    setTools(prev => prev.map((t, i) =>
+      i === index ? { ...t, planKey, monthlySpend: price * seats } : t
+    ))
+  }
+
   function addTool() {
     setTools(prev => [...prev, { ...DEFAULT_TOOL_ENTRY }])
   }
@@ -101,6 +110,7 @@ export default function FormPage() {
               tool={tool}
               index={index}
               onToolChange={handleToolChange}
+              onPlanChange={handlePlanChange}
               onUpdate={updateTool}
               onRemove={() => removeTool(index)}
               showRemove={tools.length > 1}
@@ -161,7 +171,7 @@ export default function FormPage() {
 }
 
 // ─── Tool Row Component ───────────────────────────────────────────────────────
-function ToolRow({ tool, index, onToolChange, onUpdate, onRemove, showRemove }) {
+function ToolRow({ tool, index, onToolChange, onPlanChange, onUpdate, onRemove, showRemove }) {
   const toolData = TOOLS[tool.toolKey]
   const plans = toolData ? Object.entries(toolData.plans) : []
 
@@ -200,7 +210,7 @@ function ToolRow({ tool, index, onToolChange, onUpdate, onRemove, showRemove }) 
           <label className="block text-xs text-gray-400 mb-1">Plan</label>
           <select
             value={tool.planKey}
-            onChange={e => onUpdate(index, 'planKey', e.target.value)}
+            onChange={e => onPlanChange(index, e.target.value)}
             className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500"
           >
             {plans.map(([key, plan]) => (
@@ -216,7 +226,12 @@ function ToolRow({ tool, index, onToolChange, onUpdate, onRemove, showRemove }) 
             type="number"
             min="1"
             value={tool.seats}
-            onChange={e => onUpdate(index, 'seats', Number(e.target.value))}
+            onChange={e => {
+              const seats = Number(e.target.value)
+              const price = TOOLS[tool.toolKey]?.plans[tool.planKey]?.price || 0
+              onUpdate(index, 'seats', seats)
+              onUpdate(index, 'monthlySpend', price * seats)
+            }}
             className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500"
           />
         </div>
@@ -232,6 +247,11 @@ function ToolRow({ tool, index, onToolChange, onUpdate, onRemove, showRemove }) 
             onChange={e => onUpdate(index, 'monthlySpend', Number(e.target.value))}
             className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:outline-none focus:border-blue-500"
           />
+          {TOOLS[tool.toolKey]?.plans[tool.planKey]?.price && (
+            <p className="text-xs text-gray-600 mt-1">
+              Listed price: ${TOOLS[tool.toolKey].plans[tool.planKey].price}/user/mo
+            </p>
+          )}
         </div>
       </div>
     </div>
