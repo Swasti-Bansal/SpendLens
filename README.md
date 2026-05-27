@@ -7,16 +7,16 @@ Find out if you're overpaying for AI tools in under a minute. Free audit for sta
 ## Screenshots
 
 ### Landing Page
-![Landing Page](/LandingPage.png)
+![Landing Page](./src/assets/LandingPage.png)
 
 ### Audit Form
-![Audit Form](/AuditForm.png)
+![Audit Form](./src/assets/AuditForm.png)
 
 ### Results Page — Savings Overview
-![Results Overview](/ResultPage1.png)
+![Results Overview](./src/assets/ResultPage1.png)
 
 ### Results Page — Tool Recommendations
-![Results Recommendations](/ResultPage2.png)
+![Results Recommendations](./src/assets/ResultPage2.png)
 
 ---
 
