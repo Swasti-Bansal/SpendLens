@@ -179,7 +179,7 @@ function checkAlternative(toolKey, planKey, seats, monthlySpend, useCase) {
   return null; // Cross-tool check handled at runAudit level (future)
 }
 
-function checkApiVsSeat(toolKey, planKey, seats, monthlySpend, teamSize) {
+function checkApiVsSeat(toolKey, planKey, seats, monthlySpend) {
   // High API-like spend on a seat plan for devs who build products
   if (
     (toolKey === "anthropic_api" || toolKey === "openai_api") &&
