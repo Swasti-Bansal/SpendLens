@@ -10,12 +10,17 @@ Built in 7 days as a working product, not a prototype. No login required. Email 
 
 ## Screenshots
 
-| Form Page | Results — High Savings | Results — Optimal | Results — Recommendations |
-|-----------|----------------------|-------------------|
-| ![Landing Page](./src/assets/LandingPage.png) | ![Audit Form](./src/assets/AuditForm.png) | ![Results Overview](./src/assets/ResultPage1.png)|![Results Recommendations](./src/assets/ResultPage2.png)|
+### Form Page
+![Landing Page](./src/assets/LandingPage.png)
 
+### Audit Form
+![Audit Form](./src/assets/AuditForm.png)
 
----
+### Results — High Savings
+![Results Overview](./src/assets/ResultPage1.png)
+
+### Results — Recommendations
+![Results Recommendations](./src/assets/ResultPage2.png)
 
 ## Quick Start
 
