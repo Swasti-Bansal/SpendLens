@@ -1,5 +1,5 @@
 // src/engine/auditEngine.js
-import { TOOLS, USE_CASE_TOOLS } from "../data/pricingData";
+import { TOOLS} from "../data/pricingData";
 
 /**
  * Main audit function.
@@ -35,21 +35,17 @@ function auditTool(entry, context) {
 
   const plan = tool.plans[planKey];
   const recommendations = [];
-  let monthlySavings = 0;
 
   // --- Rule 1: Plan-level downgrade ---
-  const downgrade = checkDowngrade(tool, planKey, seats, monthlySpend, teamSize);
+  const downgrade = checkDowngrade(tool, planKey, seats);
   if (downgrade) {
     recommendations.push(downgrade);
-    monthlySavings += downgrade.savingsAmount;
   }
 
   // --- Rule 2: Seat over-provisioning ---
   const seatCheck = checkSeatOverprovisioning(tool, planKey, seats, monthlySpend, teamSize);
   if (seatCheck) {
     recommendations.push(seatCheck);
-    // savings already reflected in monthlySpend diff
-    monthlySavings = Math.max(monthlySavings, seatCheck.savingsAmount);
   }
 
   // --- Rule 3: Alternative tool ---
@@ -59,7 +55,7 @@ function auditTool(entry, context) {
   }
 
   // --- Rule 4: API vs seat plan ---
-  const apiCheck = checkApiVsSeat(toolKey, planKey, seats, monthlySpend, teamSize);
+  const apiCheck = checkApiVsSeat(toolKey, planKey, seats, monthlySpend);
   if (apiCheck) {
     recommendations.push(apiCheck);
   }
@@ -81,7 +77,7 @@ function auditTool(entry, context) {
 
 // ─── Individual Rules ───────────────────────────────────────────────────────
 
-function checkDowngrade(tool, planKey, seats, monthlySpend, teamSize) {
+function checkDowngrade(tool, planKey, seats) {
   // GitHub Copilot: Business at 1-2 users → Individual is sufficient
   if (tool.name === "GitHub Copilot" && planKey === "business" && seats <= 2) {
     const savings = (19 - 10) * seats;
