@@ -161,11 +161,25 @@ export default function ResultsPage() {
 
   useEffect(() => {
     const data = localStorage.getItem(`audit_${auditId}`)
-    if (!data) { navigate('/'); return }
+
+    if (!data) {
+      navigate('/')
+      return
+    }
+
     const parsed = JSON.parse(data)
-    setAudit(parsed)
-    generateSummary(parsed).then(text => { setSummary(text); setSummaryLoading(false) })
-  }, [auditId])
+
+    async function loadAudit() {
+      setAudit(parsed)
+
+      const text = await generateSummary(parsed)
+
+      setSummary(text)
+      setSummaryLoading(false)
+    }
+
+    loadAudit()
+  }, [auditId, navigate])
 
   async function handleEmailSubmit(e) {
     e.preventDefault()
