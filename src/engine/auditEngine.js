@@ -49,7 +49,7 @@ function auditTool(entry, context) {
   }
 
   // --- Rule 3: Alternative tool ---
-  const alternative = checkAlternative(toolKey, planKey, seats, monthlySpend, useCase);
+  const alternative = checkAlternative(toolKey, planKey, seats, monthlySpend);
   if (alternative) {
     recommendations.push(alternative);
   }
