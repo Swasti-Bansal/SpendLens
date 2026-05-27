@@ -2,7 +2,18 @@
 
 # Devlog
 
-## Day 1 — 2026-05-22
+## Day 1 — 2026-05-21
+**Hours worked:** 1
+
+### What I did
+Planned the overall project structure.
+
+### Plan for tomorrow
+Finalizing the structure and audit engine.
+
+---
+
+## Day 2 — 2026-05-22
 **Hours worked:** 3
 
 ### What I did
@@ -19,7 +30,7 @@ Build the pricing data file and audit engine.
 
 ---
 
-## Day 2 — 2026-05-23
+## Day 3 — 2026-05-23
 **Hours worked:** 5
 
 ### What I did
@@ -36,7 +47,7 @@ Build the FormPage UI and connect it with the audit engine.
 
 ---
 
-## Day 3 — 2026-05-24
+## Day 4 — 2026-05-24
 **Hours worked:** 5
 
 ### What I did
@@ -53,7 +64,7 @@ Build the ResultsPage and improve audit result presentation.
 
 ---
 
-## Day 4 — 2026-05-25
+## Day 5 — 2026-05-25
 **Hours worked:** 6
 
 ### What I did
@@ -70,7 +81,7 @@ Conduct user interviews and start writing project documentation.
 
 ---
 
-## Day 5 — 2026-05-26
+## Day 6 — 2026-05-26
 **Hours worked:** 4
 
 ### What I did
@@ -87,7 +98,7 @@ Complete documentation and improve the overall UI design and polish.
 
 ---
 
-## Day 6 — 2026-05-27
+## Day 7 — 2026-05-27
 **Hours worked:** 6
 
 ### What I did
